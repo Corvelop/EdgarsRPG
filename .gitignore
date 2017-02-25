@@ -49,6 +49,7 @@ build/
 *.pidb
 *.log
 *.scc
+*.cache
 
 # OS generated files #
 .DS_Store*
@@ -152,6 +153,12 @@ UpgradeLog*.htm
 **/App_Data/*.ldf
 **/App_Data/*.sdf
 
+
+# Debug Files
+**/bin/Debug/*.exe
+**/bin/Debug/*.pdb
+**/obj/Debug/*.exe
+**/obj/Debug/*.pdb
 
 #LightSwitch generated files
 GeneratedArtifacts/
