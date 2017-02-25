@@ -26,7 +26,14 @@ namespace EdgarRPG
             //To fight until someone dieds
             do
             {
-                enemy.HealthPoints = enemy.HealthPoints - 10;
+
+                var attackHP = 10;
+
+                enemy.HealthPoints = enemy.HealthPoints - attackHP;
+                Console.WriteLine($"{mainUser.PlayerInfo}  {enemy.HealthPoints}\n Enemy has lost {attackHP}HP!");
+                Console.ReadKey();
+
+                Console.Clear();
 
             } while (mainUser.HealthPoints > 0 && enemy.HealthPoints > 0);
 
@@ -36,7 +43,7 @@ namespace EdgarRPG
             }
             else if (enemy.HealthPoints <= 0)
             {
-                Console.WriteLine("You have defeated the monster");
+                Console.WriteLine("You have defeated the monster!");
             }
             
 
@@ -56,7 +63,7 @@ namespace EdgarRPG
             do
             {
                 Console.Clear();
-                Console.WriteLine(characterName +", what would you want to become?");
+                Console.WriteLine($"{characterName}, what would you want to become?");
                 Console.WriteLine("A) Warrior");
                 Console.WriteLine("B) Mage");
                 Console.WriteLine("C) Ninja");
@@ -78,8 +85,7 @@ namespace EdgarRPG
                     character = new Ninja(characterName);
                     break;
             }
-
-            Console.WriteLine(character.Name + " - " + character.CharacterType.ToString() + " LVL" + character.Level);
+            Console.Clear();
             return character;
         }
 
@@ -88,7 +94,7 @@ namespace EdgarRPG
             Console.WriteLine("Hello World! \nWhat is your name? ");
             string name = Console.ReadLine();
 
-            Console.WriteLine(name + " hows it going?");
+            Console.WriteLine($"{name} hows it going?");
 
             return name;
         }

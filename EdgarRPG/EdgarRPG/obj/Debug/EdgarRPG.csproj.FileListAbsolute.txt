@@ -7,3 +7,9 @@ D:\WWW\EdgarsRpg\EdgarRPG\EdgarRPG\obj\Debug\EdgarRPG.pdb
 D:\WWW\New folder\EdgarRPG\EdgarRPG\bin\Debug\EdgarRPG.exe.config
 D:\WWW\New folder\EdgarRPG\EdgarRPG\obj\Debug\EdgarRPG.exe
 D:\WWW\New folder\EdgarRPG\EdgarRPG\obj\Debug\EdgarRPG.pdb
+D:\WWW\RPG\EdgarRPG\EdgarRPG\bin\Debug\EdgarRPG.exe.config
+D:\WWW\RPG\EdgarRPG\EdgarRPG\obj\Debug\EdgarRPG.exe
+D:\WWW\RPG\EdgarRPG\EdgarRPG\obj\Debug\EdgarRPG.pdb
+D:\WWW\RPG\EdgarRPG\EdgarRPG\bin\Debug\EdgarRPG.exe
+D:\WWW\RPG\EdgarRPG\EdgarRPG\bin\Debug\EdgarRPG.pdb
+D:\WWW\RPG\EdgarRPG\EdgarRPG\obj\Debug\EdgarRPG.csprojResolveAssemblyReference.cache

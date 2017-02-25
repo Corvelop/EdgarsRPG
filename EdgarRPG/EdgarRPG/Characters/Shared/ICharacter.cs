@@ -13,5 +13,6 @@ namespace EdgarRPG
         int HealthPoints { get; set; }
         int Gold { get; set; }
         int Level { get; set; }
+        string PlayerInfo { get;}
     }
 }

@@ -19,5 +19,12 @@ namespace EdgarRPG
         public int HealthPoints { get; set; }
         public int Gold { get; set; }
         public int Level { get; set; }
+        public string PlayerInfo
+        {
+            get
+            {
+                return $"{Name} - {CharacterType.ToString() } LVL {Level}";
+            }
+        }
     }
 }
