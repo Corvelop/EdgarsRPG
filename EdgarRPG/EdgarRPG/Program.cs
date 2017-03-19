@@ -9,9 +9,10 @@ namespace EdgarRPG
     class Program
     {
         static void Main(string[] args)
+
         {
             string name  = IntroStory();
-            ICharacter character = BeginingOfTheGame(name);
+            ICharacter character = BeginningOfTheGame(name);
             Battle(character);
 
             //Console.WriteLine(mainUser.CharacterType.ToString());
@@ -22,15 +23,15 @@ namespace EdgarRPG
         private static bool Battle(ICharacter mainUser)
         {
             Enemy enemy = new Enemy();
+            Console.WriteLine("An Ememy has shown up. What would you like to do?");
 
             //To fight until someone dieds
             do
             {
+                var healthPointBefore = enemy.HealthPoints;
+                mainUser.AttackOptions(enemy);
 
-                var attackHP = 10;
-
-                enemy.HealthPoints = enemy.HealthPoints - attackHP;
-                Console.WriteLine($"{mainUser.PlayerInfo}  {enemy.HealthPoints}\n Enemy has lost {attackHP}HP!");
+           
                 Console.ReadKey();
 
                 Console.Clear();
@@ -45,7 +46,6 @@ namespace EdgarRPG
             {
                 Console.WriteLine("You have defeated the monster!");
             }
-            
 
             return false;
         }
@@ -55,10 +55,10 @@ namespace EdgarRPG
             throw new NotImplementedException();
         }
 
-        private static ICharacter BeginingOfTheGame(string characterName)
+        private static ICharacter BeginningOfTheGame(string characterName)
         {
             ICharacter character = null;
-            string TypeOfCharacter;
+            string typeOfCharacter;
 
             do
             {
@@ -68,12 +68,12 @@ namespace EdgarRPG
                 Console.WriteLine("B) Mage");
                 Console.WriteLine("C) Ninja");
 
-                TypeOfCharacter = Console.ReadLine().ToUpper();
+                typeOfCharacter = Console.ReadLine().ToUpper();
 
                 Console.Clear();
-            } while (TypeOfCharacter != "A" && TypeOfCharacter != "B" && TypeOfCharacter != "C");
+            } while (typeOfCharacter != "A" && typeOfCharacter != "B" && typeOfCharacter != "C");
 
-            switch (TypeOfCharacter)
+            switch (typeOfCharacter)
             {
                 case "A":
                     character =new Warrior(characterName);

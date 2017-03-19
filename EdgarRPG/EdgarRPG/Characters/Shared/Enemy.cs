@@ -29,6 +29,18 @@ namespace EdgarRPG
             }
         }
 
+        public void Attack(ICharacter character)
+        {
+            Random rng = new Random();
+
+            rng.Next(Level * 1, Level * 6);
+        }
+
+        public void AttackOptions(ICharacter character)
+        {
+          //ToDo
+        }
+
 
     }
 }

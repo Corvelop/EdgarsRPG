@@ -14,5 +14,9 @@ namespace EdgarRPG
         int Gold { get; set; }
         int Level { get; set; }
         string PlayerInfo { get;}
+
+        void Attack(ICharacter character);
+        void AttackOptions(ICharacter character);
+        
     }
 }
