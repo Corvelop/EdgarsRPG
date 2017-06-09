@@ -25,16 +25,26 @@ namespace EdgarRPG
         {
             get
             {
-                return $"{Name} - {CharacterType.ToString() } LVL {Level}";
+                return $"Enemy - LVL:{Level} HP:{HealthPoints}\n";
             }
         }
 
         public void Attack(ICharacter character)
         {
             Random rng = new Random();
+            int hit = Level - character.Level;
 
-            rng.Next(Level * 1, Level * 6);
+            if (hit <= 0)
+            {
+                hit = 1;
+            }
+            var hitPointsTaking = rng.Next(hit * 3, hit * 14);
+
+            character.HealthPoints -= hitPointsTaking;
+
+            Console.WriteLine($"{character.PlayerInfo}{PlayerInfo}\nYou has lost {hitPointsTaking}HP!\n");
         }
+
 
         public void AttackOptions(ICharacter character)
         {

@@ -12,6 +12,7 @@ namespace EdgarRPG
         {
             Gold = 1;
             HealthPoints = 100;
+            Level = 1;
         }
 
         public string Name { get; set; }
@@ -23,7 +24,7 @@ namespace EdgarRPG
         {
             get
             {
-                return $"{Name} - {CharacterType.ToString() } LVL {Level}";
+                return $"{Name} - {CharacterType.ToString() } LVL:{Level} HP:{HealthPoints}\n";
             }
         }
 
@@ -40,17 +41,16 @@ namespace EdgarRPG
 
             character.HealthPoints -= hitPointsTaking;
 
-            Console.WriteLine($"{PlayerInfo}  {HealthPoints}\nEnemy has lost {hitPointsTaking}HP!");
-            Console.ReadKey();
+            Console.WriteLine($"{PlayerInfo}{character.PlayerInfo}\nEnemy has lost {hitPointsTaking}HP!\n");
         }
 
         public void AttackOptions(ICharacter character)
         {
+
             string attackOption;
             do
             {
-                Console.Clear();
-                Console.WriteLine("Would you like to...\n A)Attack\n B)Heal\n C)Nothing\n");
+                Console.WriteLine("Would you like to...\n A)Attack\n B)Heal\n C)Nothing\n\n");
 
                 attackOption = Console.ReadLine().ToUpper();
 
@@ -63,7 +63,7 @@ namespace EdgarRPG
                     Attack(character);
                     break;
                 case "B":
-                    Heal();
+                    Heal(character);
                     break;
                 case "C":
                 default:
@@ -71,9 +71,19 @@ namespace EdgarRPG
             }
         }
 
-        private void Heal()
+        private void Heal(ICharacter character)
         {
-            this.HealthPoints += 5;
+            var numberOfHealthPointsToAdd = 6;
+
+            this.HealthPoints += numberOfHealthPointsToAdd;
+
+            //user can not have a greater amount of health point then the max value.
+            if(this.HealthPoints > 100)
+            {
+                this.HealthPoints = 100;
+            }
+
+            Console.WriteLine($"{PlayerInfo}{character.PlayerInfo}You have has gained {numberOfHealthPointsToAdd}HP!\n");
         }
     }
 }

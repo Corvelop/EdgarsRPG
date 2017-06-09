@@ -11,16 +11,15 @@ namespace EdgarRPG
         static void Main(string[] args)
 
         {
+            //TODO: add more to the story. 
             string name  = IntroStory();
             ICharacter character = BeginningOfTheGame(name);
             Battle(character);
 
-            //Console.WriteLine(mainUser.CharacterType.ToString());
-
             Console.ReadKey();
         }
 
-        private static bool Battle(ICharacter mainUser)
+        private static void Battle(ICharacter mainUser)
         {
             Enemy enemy = new Enemy();
             Console.WriteLine("An Ememy has shown up. What would you like to do?");
@@ -29,12 +28,12 @@ namespace EdgarRPG
             do
             {
                 var healthPointBefore = enemy.HealthPoints;
+
+                //TODO: make the use and the Enemy attack at the same time.. not having to click again once you finished your turn. 
                 mainUser.AttackOptions(enemy);
-
-           
                 Console.ReadKey();
-
                 Console.Clear();
+                enemy.Attack(mainUser);
 
             } while (mainUser.HealthPoints > 0 && enemy.HealthPoints > 0);
 
@@ -45,14 +44,37 @@ namespace EdgarRPG
             else if (enemy.HealthPoints <= 0)
             {
                 Console.WriteLine("You have defeated the monster!");
+
+                //TODO: come back to full health and get experice
             }
 
-            return false;
         }
 
         private static void GameOver()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Snakee..... SNAKE!!!!!!\n would you like to play again?");
+
+            string playAgainOption = string.Empty;
+
+            do
+            {
+                Console.WriteLine("Would you like to play again?\ny/n");
+
+                playAgainOption = Console.ReadLine().ToUpper();
+
+                Console.Clear();
+            } while (playAgainOption != "N" && playAgainOption != "Y");
+
+            switch (playAgainOption)
+            {
+                case "Y":
+                    Main(new string[0]);
+                    break;
+                case "N":
+                    //TODO: Add credits... created by... etc etc.
+                    break;
+            }
+        
         }
 
         private static ICharacter BeginningOfTheGame(string characterName)
