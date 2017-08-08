@@ -12,7 +12,7 @@ namespace EdgarRPG
         {
            
         }
-        public Ninja(string name) : base()
+        public Ninja(string name) : this()
         {
             this.Name = name;
         }

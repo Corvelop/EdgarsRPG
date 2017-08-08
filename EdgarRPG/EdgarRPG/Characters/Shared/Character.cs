@@ -17,6 +17,7 @@ namespace EdgarRPG
 
         public string Name { get; set; }
         public virtual Enums.CharacterTypes CharacterType => Enums.CharacterTypes.None;
+        public int NumberOfHealthPotions { get; set; } = 3; 
         public int HealthPoints { get; set; }
         public int Gold { get; set; }
         public int Level { get; set; }
@@ -24,7 +25,7 @@ namespace EdgarRPG
         {
             get
             {
-                return $"{Name} - {CharacterType.ToString() } LVL:{Level} HP:{HealthPoints}\n";
+                return $"{Name} - {CharacterType.ToString() } LVL:{Level} HP:{HealthPoints} HP Potions:{NumberOfHealthPotions}\n";
             }
         }
 
@@ -41,21 +42,19 @@ namespace EdgarRPG
 
             character.HealthPoints -= hitPointsTaking;
 
-            Console.WriteLine($"{PlayerInfo}{character.PlayerInfo}\nEnemy has lost {hitPointsTaking}HP!\n");
+            Console.WriteLine($"{PlayerInfo}{character.PlayerInfo}\nEnemy has lost {hitPointsTaking}HP!");
         }
 
         public void AttackOptions(ICharacter character)
         {
 
             string attackOption;
-            do
-            {
-                Console.WriteLine("Would you like to...\n A)Attack\n B)Heal\n C)Nothing\n\n");
 
-                attackOption = Console.ReadLine().ToUpper();
+            Console.WriteLine("Would you like to...\n A)Attack\n B)Heal\n C)Nothing\n\n");
 
-                Console.Clear();
-            } while (attackOption != "A" && attackOption != "B" && attackOption != "C");
+            attackOption = Console.ReadLine().ToUpper();
+
+            Console.Clear();
 
             switch (attackOption)
             {
@@ -63,18 +62,30 @@ namespace EdgarRPG
                     Attack(character);
                     break;
                 case "B":
-                    Heal(character);
+                    if(NumberOfHealthPotions.Equals(0))
+                    {
+                        Console.WriteLine("You are call out of health potions");
+                        AttackOptions(character);
+                    }
+                    else
+                    {
+                        NumberOfHealthPotions--;
+                        Heal(character);
+                    }
                     break;
                 case "C":
                 default:
+                    AttackOptions(character);
                     break;
             }
         }
 
         private void Heal(ICharacter character)
         {
-            var numberOfHealthPointsToAdd = 6;
 
+            Random rng = new Random();
+            var numberOfHealthPointsToAdd = rng.Next(5, 12);
+          
             this.HealthPoints += numberOfHealthPointsToAdd;
 
             //user can not have a greater amount of health point then the max value.

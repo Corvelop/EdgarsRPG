@@ -12,7 +12,7 @@ namespace EdgarRPG
         {
            
         }
-        public Mage(string name) : base()
+        public Mage(string name) : this()
         {
             this.Name = name;
         }

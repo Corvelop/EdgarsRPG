@@ -13,7 +13,7 @@ namespace EdgarRPG
           
         }
 
-        public Warrior(string name) : base()
+        public Warrior(string name) : this()
         {
             this.Name = name;
         }

@@ -15,7 +15,6 @@ namespace EdgarRPG
             Gold = 10;
         }
 
-
         public string Name { get; set; }
         public virtual Enums.CharacterTypes CharacterType => Enums.CharacterTypes.None;
         public int HealthPoints { get; set; }
@@ -38,19 +37,17 @@ namespace EdgarRPG
             {
                 hit = 1;
             }
-            var hitPointsTaking = rng.Next(hit * 3, hit * 14);
+
+            var hitPointsTaking = rng.Next(hit * 4, hit * 14);
 
             character.HealthPoints -= hitPointsTaking;
 
-            Console.WriteLine($"{character.PlayerInfo}{PlayerInfo}\nYou has lost {hitPointsTaking}HP!\n");
+            Console.WriteLine($"You has lost {hitPointsTaking}HP!\n");
         }
-
 
         public void AttackOptions(ICharacter character)
         {
           //ToDo
         }
-
-
     }
 }

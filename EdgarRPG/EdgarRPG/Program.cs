@@ -31,8 +31,6 @@ namespace EdgarRPG
 
                 //TODO: make the use and the Enemy attack at the same time.. not having to click again once you finished your turn. 
                 mainUser.AttackOptions(enemy);
-                Console.ReadKey();
-                Console.Clear();
                 enemy.Attack(mainUser);
 
             } while (mainUser.HealthPoints > 0 && enemy.HealthPoints > 0);
@@ -52,18 +50,12 @@ namespace EdgarRPG
 
         private static void GameOver()
         {
-            Console.WriteLine("Snakee..... SNAKE!!!!!!\n would you like to play again?");
-
+            Console.WriteLine("Snakee..... SNAKE!!!!!!");
             string playAgainOption = string.Empty;
 
-            do
-            {
-                Console.WriteLine("Would you like to play again?\ny/n");
-
-                playAgainOption = Console.ReadLine().ToUpper();
-
-                Console.Clear();
-            } while (playAgainOption != "N" && playAgainOption != "Y");
+            Console.WriteLine("Would you like to play again?\ny/n");
+            playAgainOption = Console.ReadLine().ToUpper();
+            Console.Clear();
 
             switch (playAgainOption)
             {
@@ -72,6 +64,9 @@ namespace EdgarRPG
                     break;
                 case "N":
                     //TODO: Add credits... created by... etc etc.
+                    break;
+                default:
+                    GameOver();
                     break;
             }
         
@@ -82,18 +77,14 @@ namespace EdgarRPG
             ICharacter character = null;
             string typeOfCharacter;
 
-            do
-            {
-                Console.Clear();
-                Console.WriteLine($"{characterName}, what would you want to become?");
-                Console.WriteLine("A) Warrior");
-                Console.WriteLine("B) Mage");
-                Console.WriteLine("C) Ninja");
+            Console.Clear();
+            Console.WriteLine($"{characterName}, what would you want to become?");
+            Console.WriteLine("A) Warrior");
+            Console.WriteLine("B) Mage");
+            Console.WriteLine("C) Ninja");
 
-                typeOfCharacter = Console.ReadLine().ToUpper();
-
-                Console.Clear();
-            } while (typeOfCharacter != "A" && typeOfCharacter != "B" && typeOfCharacter != "C");
+            typeOfCharacter = Console.ReadLine().ToUpper();
+            Console.Clear();
 
             switch (typeOfCharacter)
             {
@@ -105,6 +96,9 @@ namespace EdgarRPG
                     break;
                 case "C":
                     character = new Ninja(characterName);
+                    break;
+                default:
+                    BeginningOfTheGame(characterName);
                     break;
             }
             Console.Clear();
